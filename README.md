@@ -4,7 +4,7 @@
 
 ![Learning](https://t3.ftcdn.net/jpg/06/14/01/52/360_F_614015247_EWZHvC6AAOsaIOepakhyJvMqUu5tpLfY.jpg)
 
-# <b>1 <span style='color:#78D118'>|</span> Overview</b>
+# <b><span style='color:#78D118'>|</span> Overview</b>
 
 In this notebook we're going to Fine-Tuning LLM:
 
