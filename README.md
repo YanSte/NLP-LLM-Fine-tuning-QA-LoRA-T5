@@ -1,6 +1,6 @@
-# | NLP | LLM | Fine-tuning | Chatbot LoRA T5 Large |
+# | NLP | LLM | Fine-tuning | Chatbot QA LoRA T5 |
 
-## Natural Language Processing (NLP) and Large Language Models (LLM) with Fine-Tuning LLM and make Chatbot with LoRA and Flan-T5 Large
+## Natural Language Processing (NLP) and Large Language Models (LLM) with Fine-Tuning LLM and make Chatbot Question answering (QA) with LoRA and Flan-T5 Large
 
 ![Learning](https://t3.ftcdn.net/jpg/06/14/01/52/360_F_614015247_EWZHvC6AAOsaIOepakhyJvMqUu5tpLfY.jpg)
 
