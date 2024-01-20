@@ -4,7 +4,6 @@
 
 ![Learning](https://t3.ftcdn.net/jpg/06/14/01/52/360_F_614015247_EWZHvC6AAOsaIOepakhyJvMqUu5tpLfY.jpg)
 
-
 # <b><span style='color:#78D118'>|</span> Overview</b>
 
 In this notebook we're going to Fine-Tuning LLM:
@@ -21,6 +20,7 @@ It is important to recognize that fine-tuning is model training. The training pr
 
 <img src="https://github.com/YanSte/NLP-LLM-Fine-tuning-Trainer/blob/main/img_3.png?raw=true" alt="Learning" width="50%">
 
+[Hugging Face Model](https://huggingface.co/YanSte/t5_large_fine_tuning_question_answering_hc3_chatgpt_prompts)
 
 ### Overview definitions
 
