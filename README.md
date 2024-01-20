@@ -4,6 +4,7 @@
 
 ![Learning](https://t3.ftcdn.net/jpg/06/14/01/52/360_F_614015247_EWZHvC6AAOsaIOepakhyJvMqUu5tpLfY.jpg)
 
+
 # <b><span style='color:#78D118'>|</span> Overview</b>
 
 In this notebook we're going to Fine-Tuning LLM:
@@ -25,7 +26,7 @@ It is important to recognize that fine-tuning is model training. The training pr
 ### Overview definitions
 
 <details>
-  <summary><b>T5 Model</b></summary>  
+  <summary><b>T5 Model</b></summary>
   <br/>
   Multiple formats of FLAN-T5 models are available on Hugging Face, from small to extra-large models, and the bigger the model, the more parameters it has.
 
@@ -47,19 +48,19 @@ It is important to recognize that fine-tuning is model training. The training pr
 <br/>
 
 <details>
-  <summary><b>Fine-Tuning with LoRA</b></summary>  
+  <summary><b>Fine-Tuning with LoRA</b></summary>
   <br/>
-    Fine-tuning, a crucial aspect of adapting pre-trained models to specific tasks, has witnessed a revolutionary approach known as Low Rank Adaptation (LoRA). Unlike conventional fine-tuning methods, LoRA strategically freezes pre-trained model weights and introduces trainable rank decomposition matrices into the Transformer architecture's layers. This innovative technique significantly reduces the number of trainable parameters, leading to expedited fine-tuning processes and mitigated overfitting.
+  Fine-tuning, a crucial aspect of adapting pre-trained models to specific tasks, has witnessed a revolutionary approach known as Low Rank Adaptation (LoRA). Unlike conventional fine-tuning methods, LoRA strategically freezes pre-trained model weights and introduces trainable rank decomposition matrices into the Transformer architecture's layers. This innovative technique significantly reduces the number of trainable parameters, leading to expedited fine-tuning processes and mitigated overfitting.
 
 </details>
 
 <br/>
 
 <details>
-  <summary><b>Text Generation vs Text2Text Generation</b></summary>  
+  <summary><b>Text Generation vs Text2Text Generation</b></summary>
   <br/>
-    
-  **Text Generation**:
+
+  <b>Text Generation:</b>
 
   Text Generation, also known as Causal Language Modeling, is the process of generating text that closely resembles human writing.
 
@@ -67,22 +68,22 @@ It is important to recognize that fine-tuning is model training. The training pr
 
   It utilizes a Decoder-only architecture and operates in a left-to-right context. Text Generation is often employed for tasks such as sentence completion and generating the next lines of poetry when given a few lines as input. Examples of Text Generation models include the GPT family, BLOOM, and PaLM, which find applications in Chatbots, Text Completion, and content generation.
 
-   ```python
-   from transformers import pipeline
+  ```python
+  from transformers import pipeline
 
-   task = "text-generation"
-   model_name = "gpt2"
-   max_output_length = 30
-   num_of_return_sequences = 2
-   input_text = "Hello, "
+  task = "text-generation"
+  model_name = "gpt2"
+  max_output_length = 30
+  num_of_return_sequences = 2
+  input_text = "Hello, "
 
-   text_generator = pipeline(task,model=model_name)
+  text_generator = pipeline(task, model=model_name)
 
-   text_generator(input_text, max_length=max_output_length, num_return_sequences=num_of_return_sequences)
-   ```
+  text_generator(input_text, max_length=max_output_length, num_return_sequences=num_of_return_sequences)
+  ```
   <br/>
-    
-  **Text2Text Generation**:
+
+  <b>Text2Text Generation:</b>
 
   Text-to-Text Generation, also known as Sequence-to-Sequence Modeling, is the process of converting one piece of text into another.
 
@@ -92,22 +93,21 @@ It is important to recognize that fine-tuning is model training. The training pr
 
   Examples of Text-to-Text Generation models include Transformer-based architectures like T5 (Text-to-Text Transfer Transformer) and BART (Bart is not just another Reformatter).
 
+  ```python
+  from transformers import pipeline
 
-   ```python
-   from transformers import pipeline
+  task = "text2text-generation"
+  model_name = "t5-small"
+  max_output_length = 50
+  num_of_return_sequences = 2
+  input_text = "Translate the following English text to French: 'Hello, how are you?'"
 
-   task = "text2text-generation"
-   model_name = "t5-small"
-   max_output_length = 50
-   num_of_return_sequences = 2
-   input_text = "Translate the following English text to French: 'Hello, how are you?'"
+  text_generator = pipeline(task, model=model_name)
 
-   text_generator = pipeline(task, model=model_name)
-
-   text_generator(input_text, max_length=max_output_length, num_return_sequences=num_of_return_sequences)
-   ```
-   <br/>
-   In this example, we use the T5 model from Hugging Face to perform text-to-text generation. The input text is an English sentence that we want to translate into French. The model is capable of generating multiple possible translations.
+  text_generator(input_text, max_length=max_output_length, num_return_sequences=num_of_return_sequences)
+  ```
+  <br/>
+  In this example, we use the T5 model from Hugging Face to perform text-to-text generation. The input text is an English sentence that we want to translate into French. The model is capable of generating multiple possible translations.
 
 </details>
 
@@ -122,25 +122,26 @@ It is important to recognize that fine-tuning is model training. The training pr
 
   <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*SJtZupeQVgp3s5HOBymcQw.png" alt="Learning" width="40%">
   <img src="https://github.com/YanSte/NLP-LLM-Fine-tuning-T5-Small-Reviews/blob/main/img_1.png?raw=true" alt="Learning" width="50%">
-    
+
 </details>
+
 <br/>
 
 <details>
   <summary><b>PeftModel vs get_peft_model?</b></summary>
   <br/>
   Note:
-  1. **`PeftModel.from_pretrained`:**
-    - By default, the adapter of the PEFT model is frozen (non-trainable).
-    - You can change this by adjusting the `is_trainable` configuration.
+  1. <b>`PeftModel.from_pretrained`:</b>
+     - By default, the adapter of the PEFT model is frozen (non-trainable).
+     - You can change this by adjusting the `is_trainable` configuration.
 
-  2. **`get_peft_model` function:**
-    - Parameters are not frozen by default.
-    - Result: you obtain a trainable PEFT model for the SFT task.
+  2. <b>`get_peft_model` function:</b>
+     - Parameters are not frozen by default.
+     - Result: you obtain a trainable PEFT model for the SFT task.
 
-  3. **Fine-tuning an already fine-tuned PEFT model:**
-    - Utilize `from_pretrained`.
-    - Set `is_trainable = True` to enable training of the previously fine-tuned model.
+  3. <b>Fine-tuning an already fine-tuned PEFT model:</b>
+     - Utilize `from_pretrained`.
+     - Set `is_trainable = True` to enable training of the previously fine-tuned model.
 </details>
 
 <br/>
@@ -152,11 +153,12 @@ It is important to recognize that fine-tuning is model training. The training pr
   - ROUGE-L: Measures the longest common subsequence between the candidate and reference answers. This focuses on recall of the full text.
   - ROUGE-1, ROUGE-2, ROUGE-SU4: Compare unigram, bigram, 4-gram overlaps between candidate and reference. Focus on recall of key parts/chunks
 
-  Higher ROUGE scores generally indicate better performance for question answering. Scores close to or above 0.70+ are considered strong
+  Higher ROUGE scores generally indicate better performance for question answering. Scores close to or above 0.70+ are considered strong.
   When using this metric, processing like stemming, and removing stopwords can help improve the overall performance
 </details>
 
 <br/>
+
 
 ### Prompt Datasets
 
